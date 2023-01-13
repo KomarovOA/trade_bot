@@ -1,0 +1,17 @@
+{
+    "token": "t.123-123",
+    "tickers": {
+        "SPBE": {
+            "type": "shares",
+            "figi": "BBG002GHV6L9",
+            "name": "СПБ Биржа",
+            "quantity_lots": 1.0
+        },
+        "SBER": {
+            "type": "shares",
+            "figi": "BBG004730N88",
+            "name": "Сбер Банк"
+        }
+    },
+    "account_id": "2193348816"
+}
