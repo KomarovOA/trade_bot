@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     Invest = Invest()
+    Invest.update_instruments()
     for _ticker in Invest.params['tickers']:
         candles = Invest.get_candles(_ticker)
 

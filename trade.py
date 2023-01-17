@@ -85,7 +85,9 @@ class Invest:
                 ticker['figi'] = _instrument.figi
                 ticker['name'] = _instrument.name
                 if _instrument.short_enabled_flag:
-                    ticker['short_enabled_flag'] = 1,
+                    ticker['short_enabled_flag'] = 1
+                else:
+                    ticker['short_enabled_flag'] = 0
             if count_control_instruments == count_instruments:
                 break
 
@@ -123,7 +125,7 @@ class Invest:
                 try:
                     print(f'{ticker}')
                     print(f'Direction of trade: {action}')
-                    print(f'{ema["ema_fast"]["last"]} {ema["ema_long"]["last"]}')
+                    print(f'{ema["ema_fast"]} {ema["ema_long"]}')
                     posted_order = self.client.orders.post_order(
                         order_id=str(uuid4()),
                         figi=self.params['tickers'][ticker]['figi'],
@@ -142,7 +144,7 @@ class Invest:
 
     def get_candles(self, ticker):
         with Client(self.params['token']) as client:
-            candles_count = 1440
+            candles_count = 100
             time_now = datetime.now()
             time_day_ago = datetime.now() - timedelta(minutes=candles_count)
 
@@ -199,4 +201,4 @@ class Invest:
 
                 self.trade(ema, ticker)
 
-            sleep(10)
+            sleep(3)
